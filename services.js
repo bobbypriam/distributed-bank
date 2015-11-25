@@ -1,14 +1,10 @@
 var services = {
-  KantorCabang: {
-    KantorCabangPort: {
-      ping: ping
-    }
-  }
+  ping: ping
 };
 
 module.exports = services;
 
 // SERVICE DEFINITIONS
 function ping() {
-  return { pong: 1 };
+  return { pingReturn: 1 };
 }
