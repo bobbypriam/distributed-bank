@@ -18,5 +18,5 @@ app.get('/wsdl', function (req, res) {
 });
 
 var server = http.createServer(app);
-server.listen(8888);
+server.listen(process.env.PORT || 8888);
 soap.listen(server, '/', KantorCabangService, xml);
