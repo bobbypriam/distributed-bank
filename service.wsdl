@@ -1,11 +1,5 @@
 <?xml version="1.0"?>
-<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
-                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-                  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
-                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                  xmlns:tns="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-                  targetNamespace="id.ac.ui.cs.sisdis.KantorCabangNamespace">
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="id.ac.ui.cs.sisdis.KantorCabangNamespace" targetNamespace="id.ac.ui.cs.sisdis.KantorCabangNamespace">
   <wsdl:types>
     <xsd:schema targetNamespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" />
   </wsdl:types>
@@ -47,89 +41,65 @@
       <wsdl:output message="tns:getTotalSaldoResponse" />
     </wsdl:operation>
     <wsdl:operation name="ping">
-     <wsdl:input message="tns:pingRequest" />
-    <wsdl:output message="tns:pingResponse" />
-  </wsdl:operation>
-  <wsdl:operation name="register">
-    <wsdl:input message="tns:registerRequest" />
-  </wsdl:operation>
-  <wsdl:operation name="transfer">
-    <wsdl:input message="tns:transferRequest" />
-    <wsdl:output message="tns:transferResponse" />
-  </wsdl:operation>
-</wsdl:portType>
-<binding name="KantorCabangBinding" type="tns:KantorCabangPortType">
-  <soap:binding style="rpc"
-  transport="http://schemas.xmlsoap.org/soap/http" />
-  <wsdl:operation name="getSaldo">
-    <soap:operation soapAction="KantorCabang#getSaldo"
-    style="rpc" />
-    <wsdl:input>
-      <soap:body use="encoded"
-      namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-      encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-    </wsdl:input>
-    <wsdl:output>
-      <soap:body use="encoded"
-      namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-      encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-    </wsdl:output>
-  </wsdl:operation>
-  <wsdl:operation name="getTotalSaldo">
-    <soap:operation soapAction="KantorCabang#getTotalSaldo"
-    style="rpc" />
-    <wsdl:input>
-      <soap:body use="encoded"
-      namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-      encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-    </wsdl:input>
-    <wsdl:output>
-      <soap:body use="encoded"
-      namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-      encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-    </wsdl:output>
-  </wsdl:operation>
-  <wsdl:operation name="ping">
-    <soap:operation soapAction="KantorCabang#ping" style="rpc" />
-    <wsdl:input>
-      <soap:body use="encoded"
-      namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-      encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
-       </wsdl:input>
+      <wsdl:input message="tns:pingRequest" />
+      <wsdl:output message="tns:pingResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="register">
+      <wsdl:input message="tns:registerRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="transfer">
+      <wsdl:input message="tns:transferRequest" />
+      <wsdl:output message="tns:transferResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <binding name="KantorCabangBinding" type="tns:KantorCabangPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getSaldo">
+      <soap:operation soapAction="KantorCabang#getSaldo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
       <wsdl:output>
-        <soap:body use="encoded"
-        namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTotalSaldo">
+      <soap:operation soapAction="KantorCabang#getTotalSaldo" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ping">
+      <soap:operation soapAction="KantorCabang#ping" style="rpc" />
+      <wsdl:input>
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="register">
-      <soap:operation soapAction="KantorCabang#register"
-      style="rpc" />
+      <soap:operation soapAction="KantorCabang#register" style="rpc" />
       <wsdl:input>
-        <soap:body use="encoded"
-        namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="transfer">
-      <soap:operation soapAction="KantorCabang#transfer"
-      style="rpc" />
+      <soap:operation soapAction="KantorCabang#transfer" style="rpc" />
       <wsdl:input>
-        <soap:body use="encoded"
-        namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:input>
       <wsdl:output>
-        <soap:body use="encoded"
-        namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace"
-        encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        <soap:body use="encoded" namespace="id.ac.ui.cs.sisdis.KantorCabangNamespace" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
       </wsdl:output>
     </wsdl:operation>
   </binding>
   <wsdl:service name="KantorCabang">
-    <wsdl:port name="KantorCabangPort"
-    binding="tns:KantorCabangBinding">
-<soap:address location="http://localhost:8888" />
+    <wsdl:port name="KantorCabangPort" binding="tns:KantorCabangBinding">
+      <soap:address location="https://sisdis.local" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
