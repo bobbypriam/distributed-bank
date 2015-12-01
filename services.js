@@ -1,10 +1,9 @@
-var services = {
-  ping: ping
-};
+var services = module.exports = {};
 
-module.exports = services;
-
-// SERVICE DEFINITIONS
-function ping() {
+/**
+ * Handler for ping request.
+ * @return {{pingReturn: Number}} The return value of ping call.
+ */
+services.ping = function () {
   return { pingReturn: 1 };
-}
+};
