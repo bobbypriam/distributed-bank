@@ -1,6 +1,8 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 
+const SERVICES_PATH = '../lib/services';
+
 function fakeResolve(expectedResult) {
   return {
     then(callback) {
@@ -12,7 +14,7 @@ function fakeResolve(expectedResult) {
 describe('Kantor Cabang Services', () => {
   describe('ping()', () => {
     it('should return pingReturn with value 1', () => {
-      const services = require('../services')({});
+      const services = require(SERVICES_PATH)({});
 
       const result = services.ping();
 
@@ -30,7 +32,7 @@ describe('Kantor Cabang Services', () => {
         return User;
       })();
 
-      const services = require('../services')({User});
+      const services = require(SERVICES_PATH)({User});
       const user = { user_id: 1, nama: 'Test', ip_domisili: 'https://test.sisdis.ui.ac.id' };
 
       services.register(user);
@@ -46,7 +48,7 @@ describe('Kantor Cabang Services', () => {
         return User;
       })();
 
-      const services = require('../services')({User});
+      const services = require(SERVICES_PATH)({User});
       const user = { user_id: 1, nama: 'Test', ip_domisili: 'https://test.sisdis.ui.ac.id' };
 
       services.register(user);
@@ -63,7 +65,7 @@ describe('Kantor Cabang Services', () => {
         return User;
       })();
 
-      const services = require('../services')({User});
+      const services = require(SERVICES_PATH)({User});
       const user = { user_id: 1 };
 
       services.getSaldo(user, (err, response) => {
@@ -81,7 +83,7 @@ describe('Kantor Cabang Services', () => {
         return User;
       })();
 
-      const services = require('../services')({User});
+      const services = require(SERVICES_PATH)({User});
       const user = { user_id: 1 };
 
       services.getSaldo(user, (err, response) => {
@@ -105,7 +107,7 @@ describe('Kantor Cabang Services', () => {
         return User;
       })();
 
-      const services = require('../services')({User});
+      const services = require(SERVICES_PATH)({User});
       const transferDetail = { user_id: 1, nilai: 200 };
       const spy = sinon.spy(services, 'transfer');
 

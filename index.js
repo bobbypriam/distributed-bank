@@ -5,17 +5,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 // TODO: require mongoose models.
-const models = require('./models');
+const models = require('./lib/models');
 
 // SOAP service
-const services = require('./services')(models);
+const services = require('./lib/services')(models);
 const KantorCabangService = { KantorCabang: { KantorCabangPort: services } };
 
 // Express app
 const app = express();
 
 // WSDL specification
-const xml = fs.readFileSync('service.wsdl', 'utf8');
+const xml = fs.readFileSync('specification.wsdl', 'utf8');
 app.get('/wsdl', (req, res) => res.set('Content-Type', 'text/xml').send(xml));
 
 // Initialize database connection
