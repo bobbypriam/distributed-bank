@@ -41,9 +41,26 @@ module.exports = function (models) {
     models.User.findOne(user)
       .then(userData => {
         if (!userData) {
-          callback({ getSaldoResponse: -1 });
+          callback(null, { getSaldoResponse: -1 });
         } else {
-          callback({ getSaldoResponse: userData.saldo });
+          callback(null, { getSaldoResponse: userData.saldo });
+        }
+      });
+  };
+
+  services.transfer = function (user, callback) {
+    models.User.findOne({ user_id: user.user_id })
+      .then(userData => {
+        if (userData.saldo < Number(user.nilai)) {
+          callback({
+            Fault: {
+              Code: {
+                Value: 'soap:Sender',
+                Subcode: { value: 'rpc:BadArguments' }
+              },
+              Reason: { Text: 'Issufficient balance' }
+            }
+          });
         }
       });
   };

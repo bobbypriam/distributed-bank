@@ -66,7 +66,8 @@ describe('Kantor Cabang Services', () => {
       const services = require('../services')({User});
       const user = { user_id: 1 };
 
-      services.getSaldo(user, response => {
+      services.getSaldo(user, (err, response) => {
+        expect(!err).to.be.ok;
         expect(response).to.be.ok;
         expect(response).to.deep.equal({ getSaldoResponse: 100 });
         done();
@@ -83,7 +84,8 @@ describe('Kantor Cabang Services', () => {
       const services = require('../services')({User});
       const user = { user_id: 1 };
 
-      services.getSaldo(user, response => {
+      services.getSaldo(user, (err, response) => {
+        expect(!err).to.be.ok;
         expect(response).to.be.ok;
         expect(response).to.deep.equal({ getSaldoResponse: -1 });
         done();
@@ -92,7 +94,28 @@ describe('Kantor Cabang Services', () => {
   });
 
   describe('transfer()', () => {
-    it('should error if amount > balance');
+    it('should error if amount > balance', () => {
+      const User = (function () {
+        const userModel = {
+          saldo: 100
+        };
+
+        function User() {}
+        User.findOne = sinon.stub().returns(fakeResolve(userModel));
+        return User;
+      })();
+
+      const services = require('../services')({User});
+      const transferDetail = { user_id: 1, nilai: 200 };
+      const spy = sinon.spy(services, 'transfer');
+
+      try {
+        services.transfer(transferDetail);
+      } catch (e) {}
+
+      expect(spy.threw()).to.be.true;
+    });
+
     it('should decrement balance with amount if transfer success');
     it('should not decrement balance if transfer failed');
   });
