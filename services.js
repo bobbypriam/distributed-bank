@@ -13,7 +13,7 @@ module.exports = function (models) {
   /**
    * Register a user.
    *
-   * @param  {Object} user              Information about the user
+   * @param  {Object} user              Information of the user
    * @param  {Object} user.user_id      User's id
    * @param  {Object} user.nama         User's name
    * @param  {Object} user.ip_domisili  User's IP address
@@ -25,6 +25,25 @@ module.exports = function (models) {
           const newUser = new models.User(user);
           newUser.saldo = 0;
           newUser.save();
+        }
+      });
+  };
+
+  /**
+   * Get a user's balance
+   *
+   * @param  {Object}   user                Information of the user
+   * @param  {Object}   user.user_id        User's id
+   * @param  {Function} callback            The callback function, receives the response object
+   * @return {{getSaldoResponse: Number}}   The user's balance (or -1 if user not found)
+   */
+  services.getSaldo = function (user, callback) {
+    models.User.findOne(user)
+      .then(userData => {
+        if (!userData) {
+          callback({ getSaldoResponse: -1 });
+        } else {
+          callback({ getSaldoResponse: userData.saldo });
         }
       });
   };

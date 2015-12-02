@@ -56,8 +56,39 @@ describe('Kantor Cabang Services', () => {
   });
 
   describe('getSaldo()', () => {
-    it('should return customer\'s balance if customer exists');
-    it('should return -1 if customer does not exist');
+    it('should return customer\'s balance if customer exists', done => {
+      const User = (function () {
+        function User() {}
+        User.findOne = sinon.stub().returns(fakeResolve({ saldo: 100 }));
+        return User;
+      })();
+
+      const services = require('../services')({User});
+      const user = { user_id: 1 };
+
+      services.getSaldo(user, response => {
+        expect(response).to.be.ok;
+        expect(response).to.deep.equal({ getSaldoResponse: 100 });
+        done();
+      });
+    });
+
+    it('should return -1 if customer does not exist', done => {
+      const User = (function () {
+        function User() {}
+        User.findOne = sinon.stub().returns(fakeResolve(null));
+        return User;
+      })();
+
+      const services = require('../services')({User});
+      const user = { user_id: 1 };
+
+      services.getSaldo(user, response => {
+        expect(response).to.be.ok;
+        expect(response).to.deep.equal({ getSaldoResponse: -1 });
+        done();
+      });
+    });
   });
 
   describe('transfer()', () => {
