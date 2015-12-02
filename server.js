@@ -2,9 +2,10 @@ const fs = require('fs');
 const http = require('http');
 const soap = require('soap');
 const express = require('express');
+const mongoose = require('mongoose');
 
 // TODO: require mongoose models.
-const models = {};
+const models = require('./models');
 
 // SOAP service
 const services = require('./services')(models);
@@ -17,8 +18,14 @@ const app = express();
 const xml = fs.readFileSync('service.wsdl', 'utf8');
 app.get('/wsdl', (req, res) => res.set('Content-Type', 'text/xml').send(xml));
 
+// Initialize database connection
+mongoose.connect('mongodb://localhost/bank');
+
 // Start server
 const server = http.createServer(app);
 const PORT = process.env.PORT || 8888;
 server.listen(PORT, () => console.log(`Listening at ${PORT}`));
-soap.listen(server, '/', KantorCabangService, xml);
+const soapServer = soap.listen(server, '/', KantorCabangService, xml);
+soapServer.log = function (type, data) {
+  console.log(type, data);
+};

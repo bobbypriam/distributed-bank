@@ -19,7 +19,14 @@ module.exports = function (models) {
    * @param  {Object} user.ip_domisili  User's IP address
    */
   services.register = function (user) {
-
+    models.User.findOne(user)
+      .then(existing => {
+        if (!existing) {
+          const newUser = new models.User(user);
+          newUser.saldo = 0;
+          newUser.save();
+        }
+      });
   };
 
   return services;

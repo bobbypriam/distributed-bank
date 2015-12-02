@@ -19,10 +19,12 @@
   "homepage": "https://github.com/bobbypriambodo/sisdis-tugas-akhir#readme",
   "dependencies": {
     "express": "^4.13.3",
+    "mongoose": "^4.2.8",
     "soap": "^0.11.0"
   },
   "devDependencies": {
     "chai": "^3.4.1",
-    "mocha": "^2.3.4"
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2"
   }
 }
