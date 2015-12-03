@@ -24,6 +24,11 @@
     <part name="nama" type="xsd:string" />
     <part name="ip_domisili" type="xsd:string" />
   </message>
+  <message name="register">
+    <part name="user_id" type="xsd:string" />
+    <part name="nama" type="xsd:string" />
+    <part name="ip_domisili" type="xsd:string" />
+  </message>
   <message name="transferRequest">
     <part name="user_id" type="xsd:string" />
     <part name="nilai" type="xsd:string" />
